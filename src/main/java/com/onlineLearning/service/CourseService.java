@@ -27,7 +27,6 @@ public class CourseService {
 	@Autowired
 	private CourseRepository courseDao;
 	
-	
 	public void insertCourse(Course course) {
 		courseDao.save(course);
 	}
@@ -77,6 +76,10 @@ public class CourseService {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 8, Sort.Direction.DESC, "courseId");
 		Page<Course> page = courseDao.findAll(pgb);
 		return page;
+	}
+	
+	public List<Course> findCourseByType(String type){
+		return courseDao.findByType(type);
 	}
 }
 

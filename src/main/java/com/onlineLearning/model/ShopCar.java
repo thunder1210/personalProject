@@ -36,12 +36,6 @@ public class ShopCar {
 	@Transient
 	private Integer fkProductId;
 	
-	@Transient
-	private String productPhoto;
-	
-	@Transient
-	private String ProductPrice;
-	
 	public ShopCar(Integer shoppingCartAmount, Member member, Product product) {
 		super();
 		this.shoppingCartAmount = shoppingCartAmount;
@@ -97,15 +91,13 @@ public class ShopCar {
 		this.product = product;
 	}
 
-	public Integer getfkProductId() {
+	public Integer getFkProductId() {
 		return fkProductId;
 	}
 
-	public void setfkProductId(Integer fkProductId) {
+	public void setFkProductId(Integer fkProductId) {
 		this.fkProductId = fkProductId;
 	}
-
-
 
 	
 

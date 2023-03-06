@@ -31,7 +31,7 @@
             <section class="notes_sidebar_topic">置頂</section>
             <div class="notes_top_userArea">
                 <!-- <div class="notes_top_info"></div> -->
-
+                
                 <!-- client-Side Rendering Area -->   
             </div>
         </div>
@@ -58,6 +58,11 @@
             <div class="notes_update_noteTitle" id="notes_update_noteTitle">
                 <!-- client-Side Rendering Area -->
             </div>
+
+            <!-- <div class="notes_photo_test" 
+            id="notes_photo_test">
+                image test area
+            </div> -->
 
             <div class="notes_update_noteContent" id="notes_update_noteContent">
                 <!-- client-Side Rendering Area -->

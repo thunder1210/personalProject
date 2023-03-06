@@ -13,11 +13,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <style>
       a {
-        color: blue;
+        color: white;
       }
       p {
       font-size: x-large;
-      color: black;
       }
     </style>
   </head>
@@ -27,18 +26,22 @@
 	<jsp:include page="../NavBar.jsp"></jsp:include>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" style="font-size:30px" href="#">${course.courseName}</a>
-	
+	<div style="color:white; margin-right: 10px;">
+	<a href="${contextRoot}/myClass">返回首頁</a>
+
+	</div>
+
     </header>
 
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky pt-3" style="height: 600px;border-radius:0 0 10px 10px; background-color: #3C3C3C;color:white;">
+          <div class="position-sticky pt-3" style="height: 600px;border-radius:0 0 10px 10px; background-color: #3C3C3C;">
             <ul class="nav flex-column" style="font-size:20px;font-family:Microsoft JhengHei;text-align: center;">
              
              <jstl:forEach items="${allChapter}" var="cChapter">
               <li class="nav-item">
-                <a style="color:white;" class="nav-link active" aria-current="page" href="${contextRoot}/course/learning?courseId=${course.courseId}&courseChapterId=${cChapter.courseChapterId}">
+                <a class="nav-link active" aria-current="page" href="${contextRoot}/course/learning?courseId=${course.courseId}&courseChapterId=${cChapter.courseChapterId}">
                   ${cChapter.courseChapter}
                 </a>
               </li>

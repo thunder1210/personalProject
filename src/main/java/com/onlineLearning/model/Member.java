@@ -109,10 +109,10 @@ public class Member {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "member")
 	private List<Note> noteList = new ArrayList<>();
 
-//	@JsonManagedReference(value = "shopcar")
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "member")
-//	private List<ShopCar> shoppingDetail = new ArrayList<>();
-	
+	@JsonManagedReference(value = "shopcar")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "member")
+	private List<ShopCar> shoppingDetail = new ArrayList<>();
+
 //	@JsonManagedReference
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "member")
 //	private List<Order> order = new ArrayList<>();

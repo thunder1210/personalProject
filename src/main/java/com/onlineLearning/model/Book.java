@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -45,6 +46,17 @@ public class Book implements Serializable {
 	@Lob
 	@Column(name = "BookPhoto")
 	private byte[] bookPhoto;
+	
+	@OneToOne(mappedBy = "book")
+	private Product product;
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 	public Book() {
 	}

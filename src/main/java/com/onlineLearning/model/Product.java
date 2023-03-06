@@ -68,12 +68,20 @@ public class Product {
 	@JoinColumn(name = "FKCourseId")
 	private Course course;
 	
-	@JsonManagedReference
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "product")
-	private List<OrderDetail> orderDetail = new ArrayList<>();
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "FKBookId")
+	private Book book;
 	
 	public Product() {
 	
+	}
+	
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	public Product(String productName, String productPrice, String productPhoto, String productType,
@@ -200,14 +208,6 @@ public class Product {
 
 	public void setCourse(Course course) {
 		this.course = course;
-	}
-
-	public List<OrderDetail> getOrderDetail() {
-		return orderDetail;
-	}
-
-	public void setOrderDetail(List<OrderDetail> orderDetail) {
-		this.orderDetail = orderDetail;
 	}
 	
 	

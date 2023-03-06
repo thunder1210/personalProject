@@ -8,4 +8,5 @@ public interface CourseChapterRepository extends JpaRepository<CourseChapter, In
 
 	@Query(value = "select top 1　* from courseChapter where FKCourseId = :courseId", nativeQuery = true)
 	public CourseChapter showFirstChapter(@Param("courseId")Integer courseId);
+
 }

@@ -25,11 +25,6 @@ public class MemberExperienceController {
 	@Autowired
 	private MemberExperienceService ExService;
 
-	@GetMapping("/BackendSystem/test")
-	public String testHere() {
-		return "thunder/Test";
-	}
-
 	@GetMapping("/BackendSystem/box")
 	public String theMessageBox(Model model) {
 		List<MemberExperienceData> list = ExService.showAllComments();

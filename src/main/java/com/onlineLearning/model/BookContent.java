@@ -1,5 +1,7 @@
 package com.onlineLearning.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -22,11 +30,24 @@ public class BookContent {
 	@Column(name = "BookContentId")
 	private Integer bookContentId;
 	
-	@Column(name = "Bookchapter",columnDefinition = "nvarchar(MAX)")
-	private String bookchapter;
+	@Column(name = "BookChapter",columnDefinition = "nvarchar(MAX)")
+	private String bookChapter;
 	
-	@Column(name = "BookContent",columnDefinition = "nvarchar(MAX)")
-	private String bookContent;
+	@Column(name = "Content",columnDefinition = "nvarchar(MAX)")
+	private String content;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "Date")
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	private Date bookDate;
+	
+	@PrePersist
+	public void onCreate() {
+		if(bookDate == null) {
+			bookDate = new Date();
+		}
+	}
 	
 //	避免序列化 Json 本屬性
 	@JsonIgnore
@@ -51,20 +72,28 @@ public class BookContent {
 		this.bookContentId = bookContentId;
 	}
 
-	public String getBookchapter() {
-		return bookchapter;
+	public String getBookChapter() {
+		return bookChapter;
 	}
 
-	public void setBookchapter(String bookchapter) {
-		this.bookchapter = bookchapter;
+	public void setBookChapter(String bookChapter) {
+		this.bookChapter = bookChapter;
 	}
 
-	public String getBookContent() {
-		return bookContent;
+	public String getContent() {
+		return content;
 	}
 
-	public void setBookContent(String bookContent) {
-		this.bookContent = bookContent;
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getBookDate() {
+		return bookDate;
+	}
+
+	public void setBookDate(Date bookDate) {
+		this.bookDate = bookDate;
 	}
 
 	public byte[] getBookContentPhoto() {
@@ -83,8 +112,4 @@ public class BookContent {
 		this.book = book;
 	}
 
-	
-	
-	
-	
 }

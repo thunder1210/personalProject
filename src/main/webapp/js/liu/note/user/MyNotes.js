@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(bindSidebarNote, 1000);
     bindAddBtn();
     setNotesUpdateTitleArea();
+    setNotePhotoTestArea();
     setNotesUpdateContentArea();
 })
 
@@ -140,28 +141,67 @@ function setNotesUpdateTitleArea() {
     })
 }
 
-// default setting 參考用
-// tinymce.init({
-//     selector: 'textarea',  
-//     toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
-// file_picker_callback: function(callback, value, meta) {
-//     // Provide file and text for the link dialog
-//     if (meta.filetype == 'file') {
-//       callback('mypage.html', {text: 'My text'});
-//     }
+function setNotePhotoTestArea() {
+    tinymce.init({
+        selector: '#notes_photo_test',
+        plugins: 'image code',
+        toolbar: 'undo redo | link image | code',
+        // images_upload_url: 'http://localhost:8080/onlinelearning/note/user/notephoto/tinymce/upload',
+        /* enable title field in the Image dialog*/
+        image_title: true,
+        /* enable automatic uploads of images represented by blob or data URIs*/
+        // automatic_uploads: true,
+        /*
+          URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+          images_upload_url: 'postAcceptor.php',
+          here we add custom filepicker only to Image dialog
+        */
+        file_picker_types: 'image',
+        /* and here's our custom image picker*/
+        file_picker_callback: function (cb, value, meta) {
+          var input = document.createElement('input');
+          input.setAttribute('type', 'file');
+          input.setAttribute('accept', 'image/*');
 
-//     // Provide image and alt text for the image dialog
-//     if (meta.filetype == 'image') {
-//       callback('myimage.jpg', {alt: 'My alt text'});
-//     }
+          input.onchange = function () {
+            var file = this.files[0];
+      
+            var reader = new FileReader();
+            reader.onload = function () {
 
-//     // Provide alternative source and posted for the media dialog
-//     if (meta.filetype == 'media') {
-//       callback('movie.mp4', {source2: 'alt.ogg', poster: 'image.jpg'});
-//     }
-//   }
-// });
-
+              var id = 'blobid' + (new Date()).getTime();
+              var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+              var base64 = reader.result.split(',')[1];
+              var blobInfo = blobCache.create(id, file, base64);
+              blobCache.add(blobInfo);
+      
+              /* call the callback and populate the Title field with the file name */
+              cb(blobInfo.blobUri(), { title: file.name });
+            };
+            reader.readAsDataURL(file);
+          };
+      
+          input.click();
+        },
+        images_upload_handler: function (blobInfo, success, failure, file) {
+            console.log('images_upload_handler is working.');
+            let data = new FormData();
+            data.append('notePhotoFile', blobInfo.blob(), blobInfo.filename());
+            // data.append('noteId', document.querySelector('#currStarId').value);
+            axios.post('http://localhost:8080/onlinelearning/note/user/notephoto/tinymce/upload', data, {
+                headers : {"Content-Type": "multipart/form-data"}
+            })
+            .then(function (res) {
+                console.log(res.data);
+                    // success(res.data.location);
+                })
+            .catch(function (err) {
+                console.log(err);
+                    // failure('HTTP Error: ' + err.message);
+                });
+        },
+      });
+}
 
 function setNotesUpdateContentArea() {
     tinymce.init({
@@ -172,33 +212,66 @@ function setNotesUpdateContentArea() {
         promotion: false,
         branding: false,
         skin: 'oxide-dark',
-        content_css: 'dark',
-        images_upload_url: 'http://localhost:8080/onlinelearning/note/user/notephoto/upload',
-        automatic_uploads: true,
         plugins: 'image',
-        toolbar: 'undo redo | image | link image | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
-        // file_picker_callback: function(callback, value, meta) {
-        //     // Provide file and text for the link dialog
-        //     if (meta.filetype == 'file') {
-        //       callback('mypage.html', {text: 'My text'});
-        //     }
-        
-        //     // Provide image and alt text for the image dialog
-        //     if (meta.filetype == 'image') {
-        //       callback('myimage.jpg', {alt: 'My alt text'});
-        //     }
-        
-        //     // Provide alternative source and posted for the media dialog
-        //     if (meta.filetype == 'media') {
-        //       callback('movie.mp4', {source2: 'alt.ogg', poster: 'image.jpg'});
-        //     }
-        // },
+        toolbar: 'undo redo | image | bold italic | alignleft aligncenter alignright alignjustify | outdent indent ',
+        images_upload_url: 'http://localhost:8080/onlinelearning/note/user/notephoto/tinymce/upload',
+        file_picker_types: 'file image media',
+        /* enable title field in the Image dialog*/
+        image_title: true,
+        /* enable automatic uploads of images represented by blob or data URIs*/
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        /* and here's our custom image picker*/
+        file_picker_callback: function (cb, value, meta) {
+          var input = document.createElement('input');
+          input.setAttribute('type', 'file');
+          input.setAttribute('accept', 'image/*');
+
+          input.onchange = function () {
+            var file = this.files[0];
+      
+            var reader = new FileReader();
+            reader.onload = function () {
+
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+      
+                /* call the callback and populate the Title field with the file name */
+                cb(blobInfo.blobUri(), { title: file.name });
+            };
+            reader.readAsDataURL(file);
+          };
+          input.click();
+        },
+        images_upload_handler: function (blobInfo, success, failure, file) {
+            console.log('images_upload_handler is working.');
+            let data = new FormData();
+            data.append('notePhotoFile', blobInfo.blob(), blobInfo.filename());
+            data.append('noteId', document.querySelector('.notes_update_noteId').value);
+            axios.post('http://localhost:8080/onlinelearning/note/user/notephoto/tinymce/upload', data, {
+                headers : {"Content-Type": "multipart/form-data"}
+            })
+            .then(function (res) {
+                console.log(res.data);
+                let contentArea = document.querySelector('#notes_update_noteContent');
+                let images = contentArea.querySelectorAll('img');
+                images[images.length - 1].src = res.data;
+                success(res.data.location);
+                })
+            .catch(function (err) {
+                console.log(err);
+                failure('HTTP Error: ' + err.message);
+                });
+        },
         setup: function(editor) {
             editor.on('init', function(e) {
               console.log('The Content Editor has initialized.');
             });
             editor.on('change', function(e) {
-                // tinyMCE.triggerSave();
+                tinyMCE.triggerSave();
                 NotesAPI.editNote();
                 setTimeout(bindSidebarNote, 1000);
             });

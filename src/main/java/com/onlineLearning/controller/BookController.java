@@ -24,7 +24,7 @@ public class BookController {
 	private BookService Bservice;
 
 //	前往後臺首頁
-//	http://localhost:8080/onlinelearning/book/index
+//	http://localhost:8080/onlinelearning/book/AllBooks
 	@GetMapping("/book/index")
 	public String BookIndex() {
 		return "dom/BookBackend";

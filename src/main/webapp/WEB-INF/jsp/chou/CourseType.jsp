@@ -227,11 +227,10 @@
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="false" onclick="location.href='${contextRoot}/myAllCourse'">課程</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="true" onclick="location.href='${contextRoot}/book/AllCaseBooks'">書籍</button>
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="true" onclick="location.href='${contextRoot}/book/page'">書籍</button>
         </li>
       </ul>
 
-	      
 	   <div style="padding-top: 30px;padding-left:10px;display:flex;justify-content: flex-start ">
       	<form action="${contextRoot}/course/namelike" method="get">
       		<input type="text" placeholder="Search" name="searchBar">
@@ -247,9 +246,11 @@
       </form>
       </div>
 
+	
+
       <section>
         <div class="container">
-         <jstl:forEach var="course" items="${course.content}">
+         <jstl:forEach var="course" items="${course}">
             <div class="card">
                 <div class="face face1">
                     <div class="content">
@@ -260,7 +261,7 @@
                 <div class="face face2">
                     <div class="content">
                         <p>${course.courseType}</p>
-                        <a href="#">Read More</a>
+                        <a href="${contextRoot}/course/learning?courseId=${course.courseId}&courseChapterId=2">Read More</a>
                     </div>
                 </div>
             </div>
@@ -268,21 +269,8 @@
  		 </div>
       </section>
       
-<<<<<<< HEAD
-=======
       
->>>>>>> a52d9522294e4cc456d270abed6ce82e738958d6
-<div style="position: relative;">
-	<div class="col-lg-4">
-        	<ul class="pagination">
-              <jstl:if test="${currentPage > 1}"><li class="page-item"><a href="${contextRoot}/myAllCourse?p=${currentPage-1}" class="page-link">Previous</a></li></jstl:if>
-		          <jstl:forEach var="pageNumber" begin="1" end="${course.totalPages}">
-		          		<li class="page-item"><a href="${contextRoot}/myAllCourse?p=${pageNumber}" class="page-link">${pageNumber}</a></li>
-		          </jstl:forEach>
-              <li class="page-item"><jstl:if test="${currentPage < course.totalPages}"><a href="${contextRoot}/myAllCourse?p=${currentPage+1}" class="page-link">Next</a></jstl:if></li>
-  			</ul>
-	</div>
-</div>
+      
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -80,13 +80,13 @@
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" onclick="location.href='${contextRoot}/myAllCourse'">課程</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false" onclick="location.href='${contextRoot}/page'">書籍</button>
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false" onclick="location.href='${contextRoot}/book/page'">書籍</button>
         </li>
       </ul>
 
       <section>
         <div class="container">
-         <jstl:forEach var="book" items="${book.content}">
+         <jstl:forEach var="book" items="${book}">
             <div class="card">
                 <div class="face face1">
                     <div class="content" style="overflow: hidden;">
@@ -104,27 +104,7 @@
              </jstl:forEach>
   		</div>
       </section>
-      		<div>
-				<jstl:forEach var="pageNumber" begin="1" end="${book.totalPages}">
-				
-				
-				<jstl:choose>
-					<jstl:when test="${ book.number != pageNumber-1 }">
-					    <a href="${contextRoot}/page?p=${pageNumber}">${pageNumber}</a>
-					</jstl:when>
-					
-					<jstl:otherwise>
-					  ${pageNumber}
-					</jstl:otherwise>
-				</jstl:choose>
-				
-				<jstl:if test="${ pageNumber != book.totalPages }">
-				  |
-				</jstl:if>
-
-				</jstl:forEach>
-      	</div>
-      	 
+      		
       	<div style="width: 300px;">
       	<form action="${contextRoot}/findBooksByName" class="d-flex" role="search" method="get" enctype="multipart/form-data">
         <input class="form-control me-2" type="text" name="book" placeholder="Search" aria-label="Search">

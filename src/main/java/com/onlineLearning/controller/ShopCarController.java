@@ -63,7 +63,7 @@ public class ShopCarController {
 	public String showMyCar(@RequestParam("memberId") Integer MemberId,Model model) {
 		List<ShopCar> outcome = shopcarService.findBySelectedMemID(MemberId);
 		for (ShopCar shopCar : outcome) {
-			shopCar.setfkProductId(shopCar.getProduct().getProductId()); 
+			shopCar.setFkProductId(shopCar.getProduct().getProductId()); 
 		}
 //		Member member = memberService.findMemberById(MemberId);
 //		List<ShopCar> list = member.getShoppingDetail();

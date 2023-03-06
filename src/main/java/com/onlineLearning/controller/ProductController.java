@@ -109,7 +109,6 @@ public class ProductController {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("幹幹"+prod.getCourse());
 		Course course = cService.findCourseById(cId);
 			prod.setCourse(course);
 			pService.insert(prod);
@@ -164,7 +163,6 @@ public class ProductController {
 		Product pId = pService.findById(id);
 		String type = pId.getProductType();
 		Course porra = pId.getCourse();
-		System.out.println("你媽的臭逼"+porra);
 		m.addAttribute("product", pId);
 		if(type.equals("2")) {
 			if(porra == null) {

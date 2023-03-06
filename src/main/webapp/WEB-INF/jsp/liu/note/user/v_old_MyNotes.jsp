@@ -45,6 +45,6 @@
 </div>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="${contextRoot}/js/liu/note/user/MyNotes.js"></script>
+<script type="text/javascript" src="${contextRoot}/js/liu/note/user/v_old_MyNotes.js"></script>
 </body>
 </html>

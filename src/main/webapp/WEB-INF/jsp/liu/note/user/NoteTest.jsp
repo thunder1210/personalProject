@@ -33,6 +33,7 @@ ${sessionScope.loginMember.memberId}
     <label for="notePhotoFiles[]">筆記圖片：</label>
     <input type="file" multiple="multiple" id="notePhotoFiles[]" name="notePhotoFiles[]" >
     <br><br>
+    <input type="hidden" name="noteTopSetting" value="off">
     <input type="submit" id="submitBtn" value="送出">
 </form>
 

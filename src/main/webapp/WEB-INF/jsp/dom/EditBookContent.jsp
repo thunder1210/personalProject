@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jstl:set var="contextRoot" value="${pageContext.request.contextPath}" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,109 +19,17 @@
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <!-- Vendor CSS Files -->
-  <link href="${contextRoot}/backendSystem/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="${contextRoot}/backendSystem/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="${contextRoot}/backendSystem/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="${contextRoot}/backendSystem/assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="${contextRoot}/backendSystem/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="${contextRoot}/backendSystem/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="${contextRoot}/backendSystem/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="${contextRoot}/backendSystem/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="${contextRoot}/backendSystem/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${contextRoot}/backendSystem/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <!-- Template Main CSS File -->
-   <link href="${contextRoot}/backendSystem/assets/css/style.css" rel="stylesheet">
-
-
+    <link href="${contextRoot}/backendSystem/assets/css/style.css" rel="stylesheet">
 </head>
 
-<<<<<<< HEAD
-=======
-.pagination .disabled span,
-.pagination .disabled a,
-.pagination .disabled a:hover {
-    color: #999999;
-    background-color: transparent;
-    cursor: default;
-}
-
-.pagination li:first-child a {
-    border-left-width: 1px;
-    -webkit-border-radius: 3px 0 0 3px;
-    -moz-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;
-}
-
-.pagination li:last-child a {
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-}
-
-.pagination-centered {
-    text-align: center;
-}
-
-.pagination-right {
-    text-align: right;
-}
-
-.pager {
-    margin-left: 0;
-    margin-bottom: 18px;
-    list-style: none;
-    text-align: center;
-    color: #6c58bF;
-    *zoom: 1;
-}
-
-.pager:before,
-.pager:after {
-    display: table;
-    content: "";
-}
-
-.pager:after {
-    clear: both;
-}
-
-.pager li {
-    display: inline;
-    color: #6c58bF;
-}
-
-.pager a {
-    display: inline-block;
-    padding: 5px 14px;
-    color: #6c58bF;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-}
-
-.pager a:hover {
-    text-decoration: none;
-    background-color: #f5f5f5;
-}
-
-.pager .next a {
-    float: right;
-}
-
-.pager .previous a {
-    float: left;
-}
-
-.pager .disabled a,
-.pager .disabled a:hover {
-    color: #999999;
-}
-.sele{
-	padding: 7px;
-	border-radius: 10px;
-}
-</style>
-</head>	
->>>>>>> a52d9522294e4cc456d270abed6ce82e738958d6
 <body>
 
   <!-- ======= Header ======= -->
@@ -137,8 +44,8 @@
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="get" action="${contextRoot}/course/namelike">
-        <input type="text" name="searchBar" placeholder="要找什麼內容?" title="Enter search keyword">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="要找什麼內容?" title="Enter search keyword">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
@@ -292,6 +199,7 @@
           </ul><!-- End Messages Dropdown Items -->
 
         </li><!-- End Messages Nav -->
+        
 
         <li class="nav-item dropdown pe-3">
 
@@ -346,7 +254,8 @@
 <!--               </a> -->
 <!--             </li> -->
 
-          </ul><!-- End Profile Dropdown Items -->
+<!--           </ul> -->
+          <!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
       </ul>
@@ -551,49 +460,55 @@
 
         <!-- Left side columns -->
         <!-- 東西塞這邊 -->
-<!--         <div class="col-lg-8"> -->
-<!--           <div class="row"> -->
+        <div class="col-lg-8">
+          <div class="row">
 
-            <a href="${contextRoot}/course/page/insert">新增課程</a>
-            <table class="table">
-			<thead class="thead-light">
-				<tr>
-<!-- 					<td>課程編碼</td> -->
-					<td>課程名稱</td>
-					<td>課程分類</td>
-					<td>課程圖片</td>
-				</tr>
-			</thead>
-			<tbody>
-		<jstl:forEach items="${course}" var="course">
-			<tr>
-<%-- 				<td>${course.courseId}</td> --%>
-				<td>${course.courseName}</td> 
-				<td>${course.courseType}</td>
-				<td><img width="150px" height="150px" src="${course.coursePicture}"></td>
-				<td><form action="${contextRoot}/course/edit" method="get">
-						<input name="courseId" type="hidden" value="${course.courseId}" /> 
-						<input type="submit" class="btn btn-info" value="編輯" />
-					</form></td>
-				<td><form action="${contextRoot}/course/delete" method="post">
-						<input name="_method" value="delete" type="hidden" /> 
-						<input name="courseId" value="${course.courseId}" type="hidden" /> 
-						<input type="submit" class="btn btn-danger" onclick="return confirmDelete()" value="刪除" />
-					</form></td>
-			</tr>
-		</jstl:forEach>
-			</tbody>
-		</table>
+           <h1>更新書籍</h1>
 
-		<a href="https://matias.ma/nsfw/">Trust me</a>
-<!--           </div> -->
-<!--         </div>End Left side columns -->
+           <form:form method="POST"  action="${contextRoot}/EditBookContentSend" modelAttribute="bookContent" enctype="multipart/form-data">
+
+    <table>
+        <tr>
+            <td><form:label path="bookChapter">章節</form:label>
+            <form:input path="bookChapter"  class="form-control"/></td>
+        </tr>  
+        <tr>
+            <td><form:input path="bookContentId" type="hidden"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="content">內容</form:label>
+            <form:textarea cols="50" rows="5" path="content" class="form-control"  />
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            <input id="thePhoto" name="thePhoto" type="file" accept="image/*">
+            </td>
+           
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form:form>    
+    
+  </div>
+           
+           
+          
+
+           
+           
+
+          </div>
+        </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
         <div class="col-lg-4">
+
         </div><!-- End Right side columns -->
 
-<<<<<<< HEAD
       </div>
     </section>
 
@@ -627,72 +542,7 @@
 
   <!-- Template Main JS File -->
   <script src="${contextRoot}/backendSystem/assets/js/main.js"></script>
-  <script>
-  function confirmDelete(){
-	  if(confirm('確定要刪除嗎?')){
-		  return true;
-	  }else{
-		  return false;
-	  }
-  }
-  </script>
 
-
-
-=======
-	   <div style="padding-top: 30px;padding-left:10px;display:flex;justify-content: flex-start ">
-      	<form action="${contextRoot}/course/namelike" method="get">
-      		<input type="text" placeholder="Search" name="searchBar">
-      		<button type="submit" class="btn btn-primary">Search</button>
-      	</form>
-      	<form action="${contextRoot}/courseTypeOption" method="get" style="margin-left:1.5rem;">
-      	<select name="courseType" class="sele">
-      		<jstl:forEach var="cType" items="${allCourse}">
-      			<option value="${cType.courseType}">${cType.courseType}</option>
-      		</jstl:forEach>
-      	</select>
-      	<button type="submit" class="btn btn-primary">送出</button>
-      </form>
-      </div>
-
-      <section>
-        <div class="container">
-         <jstl:forEach var="course" items="${course}">
-            <div class="card">
-                <div class="face face1">
-                    <div class="content">
-                        <img src="${course.coursePicture}" alt="">
-                        <h3>${course.courseName}</h3>
-                    </div>
-                </div>
-                <div class="face face2">
-                    <div class="content">
-                        <p>${course.courseType}</p>
-                        <a href="${contextRoot}/course/learning?courseId=${course.courseId}&courseChapterId=2">Read More</a>
-                    </div>
-                </div>
-            </div>
-             </jstl:forEach>
- 		 </div>
-      </section>
-      
-      
-      
-      
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="${contextRoot}/backendSystem/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> -->
-	<script>
-        $('.burger,.overlay').click(function(){
-            $('.burger').toggleClass('clicked');
-            $('.overlay').toggleClass('show');
-            $('nav').toggleClass('nav-open');
-            // $('body').toggleClass('overflow');
-        });
-    </script>
->>>>>>> a52d9522294e4cc456d270abed6ce82e738958d6
 </body>
 
 </html>

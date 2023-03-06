@@ -99,7 +99,7 @@ public class MembershipController {
 	@PostMapping("/Membership/resetPassword")
 	public String resetPwd(@RequestParam("mail") String mail, @RequestParam("account") String account) {
 
-		String resetPw = GeneratePasswordUtil.getPassWordOne(8);
+		String resetPw = GeneratePasswordUtil.getPassWordOne(6);
 		boolean result = memberService.resetPassword(account, resetPw);
 
 		if (result == true) {

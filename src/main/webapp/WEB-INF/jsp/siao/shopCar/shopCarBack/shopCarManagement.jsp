@@ -357,21 +357,66 @@
 
 													<thead>
 														<tr>
+<<<<<<< HEAD
+															<th scope="col">Buying By(MemeberId)</th>
+															<th scope="col">ProductId</th>
+															<th scope="col">BuyingAmount</th>
+															<th scope="col">Payed</th>
+=======
 															<th scope="col">訂單編號</th>
 															<th scope="col">訂單日期</th>
 															<th scope="col">付款狀態</th>
 															<th scope="col">訂購人</th>
 															<th scope="col">合計</th>
+>>>>>>> a52d9522294e4cc456d270abed6ce82e738958d6
 														</tr>
 													</thead>
 													<tbody id="showShopList">
 														<jstl:forEach var="order" items="${allOrder}">
 															<tr>
+<<<<<<< HEAD
+																<td>${car.member.memberId}</td>
+																<td>${car.product.productId}</td>
+																<td>${car.shoppingCartAmount}</td>
+																<td>
+																	<jstl:choose>
+																		<jstl:when test="${car.payed == 1}">
+																			已付款
+																		</jstl:when>
+																		<jstl:otherwise>
+																			未付款
+																		</jstl:otherwise>
+																	</jstl:choose>
+																</td>
+																<td scope="col">
+																	<div class="edit-place" style="display: flex">
+																		<form action="${contextRoot}/products/edit"
+																			method="get">
+																			<input type="hidden"
+																				value="${car.shoppingCartId}"
+																				name="id1">
+																			<button type="submit"
+																				class="btn btn-warning">修改</button>
+																		</form>
+
+																		<form action="${contextRoot}/shopCar/delete"
+																			method="post"
+																			onsubmit="return confirmation();">
+																			<input name="_method" type="hidden"
+																				value="delete" /> <input type="hidden"
+																				value="${car.shoppingCartId}" name="id">
+																			<button type="submit" class="btn btn-danger"
+																				id="deleteBtn">刪除</button>
+																		</form>
+																	</div>
+																</td>
+=======
 																<td onclick="showThatList()">${order.orderId}</td>
 																<td>${order.orderTime}</td>
 												  				<td>${order.payed}</td>
 																<td>${order.member.memberId}</td>
 																<td>${order.totalPrice}</td>
+>>>>>>> a52d9522294e4cc456d270abed6ce82e738958d6
 															</tr>
 														</jstl:forEach>
 													</tbody>

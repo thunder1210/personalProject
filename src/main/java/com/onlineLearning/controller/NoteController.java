@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.onlineLearning.model.Member;
 import com.onlineLearning.model.Note;
@@ -50,6 +51,14 @@ public class NoteController {
 //		List<Note> notesList = noteService.refreshMemberNotesCard(fkMemberId);
 //		model.addAttribute("notesList", notesList);
 		return "/liu/note/user/MyNotes";
+	}
+	
+	@GetMapping("note/user/myNotesOld")
+	public String toMyNotesOldPage(Model model) {
+		Integer fkMemberId = 4;
+		List<Note> notesList = noteService.refreshMemberNotesCard(fkMemberId);
+		model.addAttribute("notesList", notesList);
+		return "/liu/note/user/v_old_MyNotes";
 	}
 	
 	@GetMapping("note/user/tinymceTest")
@@ -157,7 +166,7 @@ public class NoteController {
 	
 	@ResponseBody
 	@PostMapping("/note/user/notephoto/upload")
-	public String uploadNotePhoto(
+	public String uploadNotePhoto (
 			@RequestParam("notePhotoFile") MultipartFile notePhotoFile,
 			@RequestParam("noteId") Integer noteId) {
 		Note note = new Note();
@@ -167,9 +176,28 @@ public class NoteController {
 		}
 		NotePhoto notePhoto = noteService.convertOneNotePhotoFile(notePhotoFile, note);
 		noteService.addNotePhoto(notePhoto);
-	
+		
 		return "圖片上傳成功";
-
+	}
+	
+	@PostMapping("/note/user/notephoto/tinymce/upload")
+	public String uploadNotePhotoInTinyMCE (
+			@RequestParam("notePhotoFile") MultipartFile notePhotoFile,
+			@RequestParam("noteId") Integer noteId,
+			RedirectAttributes redirectAttributes
+			) {
+		Note note = new Note();
+		Optional<Note> optional = noteService.getNoteByNoteId(noteId);
+		if (optional != null) {
+			note = optional.get();
+		}
+		NotePhoto notePhoto = noteService.convertOneNotePhotoFile(notePhotoFile, note);
+		noteService.addNotePhoto(notePhoto);
+		
+		NotePhoto currPhoto = noteService.getLatestNotePhoto();
+		redirectAttributes.addAttribute("notePhotoId", currPhoto.getNotePhotoId());
+		
+		return "redirect:/note/user/notePhoto";
 	}
 	
 	

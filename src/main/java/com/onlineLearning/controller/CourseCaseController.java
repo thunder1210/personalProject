@@ -49,19 +49,30 @@ public class CourseCaseController {
 	public String allProduct(
 			@RequestParam(name = "p", defaultValue = "1")Integer pageNumber,
 			Model m) {
+		List<Course> allC = cSer.findAllCourse();
 		Page<Course> coursePage = cSer.getCourseByPage(pageNumber);
 		m.addAttribute("course", coursePage);
 		m.addAttribute("currentPage", pageNumber);
+		m.addAttribute("allCourse", allC);
 		return "chou/MyCourse";
 	}
 	
-	
-	//模糊搜尋(尚未完成)
-//	@GetMapping("/course/namelike1")
-//	public String searchCourseNameLike(@RequestParam("searchBar")String name, Model m) {
-//		List<Product> search = pSer.fuzzySearch(name);
-//		m.addAttribute("product", search);
-//		return "";
-//	}
-	
+	//條件篩選
+	@GetMapping("/courseTypeOption")
+	public String findCourseByCourseType(@RequestParam("courseType")String type, Model m) {
+		List<Course> cType = cSer.findCourseByType(type);
+		List<Course> allCourse = cSer.findAllCourse();
+		m.addAttribute("course", cType);
+		m.addAttribute("allCourse", allCourse);
+		return "chou/CourseType";
+	}
+
+	@GetMapping("/course/namelike")
+	public String searchCourseNameLike(@RequestParam("searchBar") String name, Model model) {
+		List<Course> courseNameLike = cSer.findCourseByCourseNameLike(name);
+		List<Course> allCourse = cSer.findAllCourse();
+		model.addAttribute("course", courseNameLike);
+		model.addAttribute("allCourse", allCourse);
+		return "chou/CourseBar";
+	}
 }

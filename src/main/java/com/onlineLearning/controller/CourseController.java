@@ -22,17 +22,13 @@ import com.onlineLearning.model.CourseChapter;
 import com.onlineLearning.model.Product;
 import com.onlineLearning.service.CourseService;
 import com.onlineLearning.service.ProductService;
-import com.onlineLearning.service.courseChapterService;
 
 @Controller
 public class CourseController {
 
 	@Autowired
 	private CourseService cService;
-	
-	@Autowired
-	private courseChapterService ccService;
-	
+
 	@Autowired
 	private ProductService pService;
 
@@ -51,16 +47,15 @@ public class CourseController {
 	@GetMapping("/course/learning")
 	private String goLearningPage(
 			@RequestParam("courseId") Integer id, 
+			@RequestParam("courseChapterId") Integer cid,
 			Model model) {
-		
 		Course cId = cService.findCourseById(id);
-		List<CourseChapter>  listChap = cId.getCourseChapter();
-		
-		CourseChapter all = ccService.findAll(id);
-		
-		model.addAttribute("chapter", all);
+		List<CourseChapter> listChap = cId.getCourseChapter();
+		CourseChapter cCid = cService.findCourseChapterById(cid);
+
 		model.addAttribute("course", cId);
 		model.addAttribute("allChapter", listChap);
+		model.addAttribute("chapter", cCid);
 		return "chou/CourseLearning";
 	}
 
@@ -182,13 +177,6 @@ public class CourseController {
 	public String deleteCourseById(@RequestParam("courseId") Integer id) {
 		cService.deleteByCourseId(id);
 		return "redirect:/course/admin";
-	}
-
-	@GetMapping("/course/namelike")
-	public String searchCourseNameLike(@RequestParam("searchBar") String name, Model model) {
-		List<Course> courseNameLike = cService.findCourseByCourseNameLike(name);
-		model.addAttribute("course", courseNameLike);
-		return "chou/CourseBar";
 	}
 
 }

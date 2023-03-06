@@ -14,8 +14,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
 	public Course findFirstByOrderByCourseIdDesc();
 	
-	@Query(value = "from Course where type = :type")
-	public Course findCourseByType(@Param("type") String type);
+	@Query(value = "select * from Course c where c.CourseType = :type", nativeQuery = true)
+	public List<Course> findByType(@Param("type") String type);
 	
-
 }

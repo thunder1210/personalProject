@@ -56,20 +56,20 @@ public class BooksCaseController {
 		return BService.findBookByType(bookType);
 	}
 
-//	待修正
-	@GetMapping("/book/findBooksByName")
-	public String findBooksByName(@RequestParam("bookName") String bookName, Model model) {
+//	已修正 跳至其他jsp即可
+	@GetMapping("/findBooksByName")
+	public String findBooksByName(@RequestParam("book") String bookName, Model model) {
 		List<Book> findName = BService.findBookByName(bookName);
 		model.addAttribute("book",findName);
 		
-		return "dom/MyBookCase";
+		return "dom/MyBookCaseForSearch";
 		
 	}
 	
 	
 //	http://localhost:8080/onlinelearning/book/page
 //	前往 Book 頁面
-	@GetMapping("/book/page")
+	@GetMapping("/page")
 	public String showBooksByPage(@RequestParam(name = "p",defaultValue = "1") Integer pageNumber, Model model) {
 		
 		Page<Book> page = BService.getBooksByPage(pageNumber);

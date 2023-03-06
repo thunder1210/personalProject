@@ -145,4 +145,8 @@ public class NoteService {
 	public void deleteNoteByNoteId(Integer NoteId) {
 		noteDao.deleteById(NoteId);
 	}
+	
+	public NotePhoto getLatestNotePhoto() {
+		return notePhotoDao.getLatestNotePhoto();
+	}
 }
