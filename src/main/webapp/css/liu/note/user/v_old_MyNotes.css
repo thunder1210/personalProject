@@ -1,0 +1,8 @@
+body {
+    background-color: lightblue;
+}
+
+#output-result {
+    float: right;
+    background-color: lightgreen;
+}

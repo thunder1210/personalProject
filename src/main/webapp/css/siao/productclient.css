@@ -1,0 +1,14 @@
+a {
+text-decoration: none;
+}
+.oneProductPicture{
+	width: 378px;
+    height: 378px;
+}
+.condition{
+    border-radius: 10px;
+    border-color: darkgrey;
+    border-style:solid;
+    border-width: 1px;
+    padding: 20px;
+}

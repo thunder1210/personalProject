@@ -1,0 +1,290 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat',monospace;
+}
+
+body{
+    background-color: #161616;
+    color:white;
+    
+
+}
+
+a{
+    display: block;
+    width: 100px;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #2B2B2B;
+    font-size: 1.2vw;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.top-bar-menu a:hover{
+    color:#fff;
+    background-color: #26252B;
+    opacity: .7;
+
+}
+
+
+
+.top-bar{
+    height: 66px;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #fff;
+}
+
+.top-bar-menu{
+    margin-left: 10vw;
+    display: flex;
+}
+
+.top-bar-member{
+    position: absolute;
+    right: 5%;
+    display: flex;
+}
+
+
+
+.top-bar img{
+    width: 240px;
+}
+
+.dropdown{
+	color: #ccc;
+	width: 150px;
+}
+
+.dropdown img{
+	width: 55px;
+}
+
+/* 中間大圖檔區 */
+
+.banner{
+    /* background-image: url(${contextRoot}/images/dom/banner_bg.jpg); */
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    /* background-color: #fff; */
+    height: 400px;
+    width: 100%;
+}
+
+.banner-item{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    margin:5px 0 ;
+}
+
+.banner-item img{
+	
+	width: 30%;
+	height: 30%;
+}
+
+
+/* 課程/書籍 Bar */
+.tab-header{
+    display: flex;
+    margin-top: 50px;
+    
+}
+
+
+.tab-content {
+  display: none;
+  position: relative;
+  margin: 0 auto;
+  
+ 
+}
+
+.tab-content.active {
+  display: block;
+  width: 1400px;
+  margin:0 auto ;
+  
+}
+
+.tab-header li.active {
+  font-weight: bold;
+  background-color: aqua; 
+}
+
+.tab-header li{
+    width: 100px;
+    height: auto;
+    text-align: center;
+    margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+/* 圖片卡區 */
+.container-wraper{
+    width: 1600px;
+    display: flex;
+    position: relative;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 20%;
+    /* margin: 300px; */
+}
+
+/* .container{
+    width: 50%;
+    position: absolute;
+    top: 24%;
+    left: 0;
+    transform: translate(-50%,-50%);
+    align-items: center;
+    margin-left: 10%;
+    background-color: blue;
+} */
+
+.card-project{
+    width: 300px;
+    margin: 10px;
+    background-color: #26252B;
+    margin-bottom: 10%;
+    cursor: pointer;
+    transition: all .5s;
+    transform: translate3d(0px , 0px , 0px) scale3d(1 ,1 ,1) rotateX(0deg) rotateY(0deg)
+    rotateZ(0deg) skew(0deg , 0deg);
+    transform-style: preserve-3d;
+   
+}
+
+.img_container{
+    margin: auto;
+    width: 100%;
+
+}
+
+
+.content-card{
+    width: 85%;
+    margin: auto;
+    padding: 10%;
+}
+
+
+.container img{
+    width: 100%;
+/*     height: fit-content; */
+    background-color: #2B2B2B;
+    object-fit: contain;
+}
+
+
+.card-project h4,
+.card-project p{
+    transition: all .5s;
+    margin-bottom: 4%;
+}
+
+
+.card-project p {
+    font-style: 1.2vw;
+    opacity: .7;
+
+}
+
+/* 浮動 */
+.card-project:hover{
+    transform: translate3d(0px , 0px , 0px) scale3d(1.02 ,1.02 ,1) rotateX(0deg) rotateY(0deg)
+    rotateZ(0deg) skew(0deg , 0deg);
+    transform-style: preserve-3d;
+}
+
+.card-project h2{
+    font-size: 2vw;
+}
+
+.card-project:hover h4{
+    color: #AB2C2C;
+}
+
+.card-project:hover p{
+    opacity: 1;
+}
+
+.btn{
+    width: 0%;
+    height: 1vw;
+    background-color: #AB2C2C;
+    transition: all .5s;
+}
+
+.card-project:hover .btn{
+    width: 100%;
+}
+
+/* footer */
+
+footer{
+    height: 80px;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+   /* align-items: center; */
+   position: relative;
+}
+
+.footer-logo img{
+    width: 150px;
+
+}
+
+.footer-content{
+    /* position: absolute;
+    right: -25%; */
+    
+}
+
+
+.footer-content h3{
+    color: #2B2B2B;
+}
+
+.footer-content ul{
+    display: flex;
+    position: absolute;
+    right: 5%;
+    
+}
+
+.footer-content ul li a{
+    display: block;
+    width: 30px;
+}
+
+.footer-content img{
+    width: 40px;
+}
+
+.footer-copyright p{
+    color: #26252B;
+    position: absolute;
+    bottom: 5%;
+    left: 28%;
+}
+
+
+

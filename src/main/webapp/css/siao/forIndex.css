@@ -1,0 +1,493 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	background-color: white;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.videobox {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 54%;
+}
+
+.videobox iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-width: 0px;
+}
+
+.videobox ul li {
+	display: inline; /* list-style: none; */
+	vertical-align: middle;
+}
+
+.yes {
+	z-index: -100;
+	position: relative;
+}
+
+.yes {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.element {
+	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.5);
+	box-shadow: 9px 9px 13px 0px rgba(0, 0, 0, 0.3);
+	width: 370px;
+	height: 250px;
+	background-image: url(dsf.jpg);
+}
+
+.formore {
+	font-weight: 800;
+	font-size: 15px;
+	position: relative;
+	bottom: 500px;
+	left: 1170px;
+	color: white;
+}
+
+/*=========================================================*/
+.dropbtn {
+	background-color: #04AA6D;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	float: right;
+	right: 5%;
+	width: 110px
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #ffffff;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	font-weight: 700;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #e2e2e2;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+
+/*==========================下拉===============================*/
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	bottom: 0px;
+}
+
+ul.drop-down-menu {
+	display: inline-block;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 13px;
+	position: relative;
+	top: 10px;
+	font-weight: bolder;
+}
+
+ul.drop-down-menu li {
+	position: relative;
+	white-space: nowrap;
+}
+
+ul.drop-down-menu>li:last-child {
+	border-right: none;
+}
+
+ul.drop-down-menu>li {
+	float: left;
+}
+
+ul.drop-down-menu a {
+	background-color: rgb(5, 5, 5);
+	color: rgb(255, 255, 255);
+	display: block;
+	padding: 0 30px;
+	text-decoration: none;
+	line-height: 40px;
+	border: 2px blue none
+}
+
+ul.drop-down-menu a:hover {
+	background-color: #ef5c28;
+	color: #fff;
+}
+
+ul.drop-down-menu li:hover>a {
+	background-color: #ef5c28;
+	color: #fff;
+}
+
+ul.drop-down-menu ul {
+	border: rgb(172, 27, 27) 1px solid;
+	position: absolute;
+	z-index: 99;
+	left: -1px;
+	top: 100%;
+	min-width: 180px;
+}
+
+ul.drop-down-menu ul li {
+	border-bottom: #ccc 1px solid;
+}
+
+ul.drop-down-menu ul li:last-child {
+	border-bottom: none;
+}
+
+ul.drop-down-menu ul ul {
+	z-index: 999;
+	top: 10px;
+	left: 90%;
+}
+
+ul.drop-down-menu ul {
+	display: none;
+}
+
+ul.drop-down-menu li:hover>ul {
+	display: block;
+}
+
+/*=========================================================*/
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap')
+	;
+
+.slide-container {
+	max-width: 870px;
+	width: 900%;
+	padding: 40px 0;
+}
+
+.slide-content {
+	margin: 0 2px;
+	overflow: hidden;
+	border-radius: 25px;
+}
+
+
+
+
+
+
+.overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #181919;
+	border-radius: 2px 25px 0 25px;
+}
+
+.overlay::after {
+	border-radius: 0 25px 0 0;
+	background-color: rgb(23, 22, 22);
+}
+
+.card-image {
+	position: relative;
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	background: rgb(30, 30, 30);
+	padding: 3px;
+}
+
+.card-image .card-img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 20%;
+	border: 4px solid #000000;
+}
+
+.name {
+	font-size: 16px;
+	font-weight: 500px;
+	color: rgb(255, 255, 255);
+	font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+.description {
+	font-size: 14px;
+	color: #ffffff;
+	text-align: center;
+}
+
+.button {
+	border: none;
+	font-size: 16px;
+	color: rgb(255, 255, 255);
+	padding: 8px 16px;
+	background-color: #383839;
+	border-radius: 6px;
+	margin: 4px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.button:hover {
+	background: #1e1a1a;
+}
+
+/*======================輪播===================================*/
+/*=============================================================*/
+/*=============================================================*/
+/*=============================================================*/
+.swiper-navBtn {
+	color: #b6b6dc;
+	transition: color 0.3s ease;
+}
+
+.swiper-navBtn:hover {
+	color: #4070F4;
+}
+
+.swiper-navBtn::before, .swiper-navBtn::after {
+	font-size: 35px;
+}
+
+.swiper-button-next {
+	right: 0;
+}
+
+.swiper-button-prev {
+	left: 0;
+}
+
+.swiper-pagination-bullet {
+	background-color: #ffffff;
+	opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: #00040e;
+}
+
+@media screen and (max-width: 768px) {
+	.slide-content {
+		margin: 0 10px;
+	}
+	.swiper-navBtn {
+		display: none;
+	}
+}
+
+/*=============================================================*/
+/*=============================================================*/
+/*=============================================================*/
+/*=============================================================*/
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap')
+	;
+
+.wrapper {
+	display: flex;
+	max-width: 1200px;
+	position: relative;
+	margin-left: 12%;
+	margin-top: 3%;
+	margin-bottom: 5%;
+}
+
+.wrapper i {
+	top: 50%;
+	height: 44px;
+	width: 44px;
+	color: #343F4F;
+	cursor: pointer;
+	font-size: 1.15rem;
+	position: absolute;
+	text-align: center;
+	line-height: 44px;
+	background: #fff;
+	border-radius: 50%;
+	transform: translateY(-50%);
+	transition: transform 0.1s linear;
+}
+
+.wrapper i:active {
+	transform: translateY(-50%) scale(0.9);
+}
+
+.wrapper i:hover {
+	background: #f2f2f2;
+}
+
+.wrapper i:first-child {
+	left: -22px;
+	display: none;
+}
+
+.wrapper i:last-child {
+	right: -22px;
+}
+
+.wrapper .carousel {
+	font-size: 0px;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	scroll-behavior: smooth;
+}
+
+.carousel.dragging {
+	cursor: grab;
+	scroll-behavior: auto;
+}
+
+.carousel.dragging img {
+	pointer-events: none;
+}
+
+.carousel img {
+	height: 340px;
+	object-fit: cover;
+	user-select: none;
+	margin-left: 14px;
+	width: calc(100%/ 3);
+}
+
+.carousel img:first-child {
+	margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+	.carousel img {
+		width: calc(100%/ 2);
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.carousel img {
+		width: 100%;
+	}
+}
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap')
+	;
+
+/*=============================================================*/
+/*=============================================================*/
+/*=============================================================*/
+/*=============================================================*/
+/*=============================================================*/
+.theHeaderPic {
+	margin-left: 5.5%;
+	width: 210px;
+	float: left;
+}
+
+.exploreForMore {
+	font-weight: 1200px;
+	border-radius: 20px;
+	border: 2px blue none"
+}
+
+.learningPlatformTitleWords {
+	margin-left: 9%;
+	padding-top: 10%;
+	font-size: 35px;
+	font-family: 'Cormorant Infant', serif;
+}
+
+.learningPlatformTitleWords2 {
+	font-size: 16px;
+	margin-top: 2%;
+	font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+.whatDoYouWannaLearn {
+	margin-left: 10%;
+}
+
+.wantToLearn1 {
+	margin-left: 10%
+}
+
+.poplarBooks {
+	margin-left: 15%;
+	margin-top: 2%;
+	font-size: 130%;
+	color: white;
+	font-weight: 700;
+}
+
+.corousalSpecialPrice {
+	color: red;
+	font-weight: 1200;
+}
+
+.theSecondCourasul {
+	background-color: white;
+	height: 900px;
+}
+
+.theSecondCourasulChildDiv {
+	margin-left: 24%;
+	padding-top: 3%;
+}
+
+#startTime {
+	color: black !important;
+	border-radius: 12px;
+	background-position: 389px;
+	background-repeat: no-repeat;
+	color: #428bca;
+	height: 34px !important;
+	background-size: 8.5%;
+	width: 420px;
+	margin-top: 3%;
+}
+
+.cIfMemberPhoto {
+	border-radius: 40px;
+	margin-top: 8%;
+}
+
+.memberNameSpan {
+	position: relative;
+	bottom: 14px;
+	font-weight: 600;
+}
